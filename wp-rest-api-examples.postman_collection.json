@@ -1,0 +1,726 @@
+{
+	"info": {
+		"_postman_id": "56378e57-65ba-42c0-8f66-fc03c319529c",
+		"name": "WP REST API Examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Init and Tests",
+			"item": [
+				{
+					"name": "Base GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts GET (w/ params)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts?_fields=author,id,excerpt,title,link",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "author,id,excerpt,title,link"
+								},
+								{
+									"key": "per_page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "orderby",
+									"value": "title",
+									"disabled": true
+								}
+							]
+						},
+						"description": "When `_fields` is provided then WordPress will skip unneeded fields when generating your response object, avoiding potentially expensive internal computation or queries for data you don’t need. This also means the JSON object returned from the REST API will be smaller, requiring less time to download and less time to parse on your client device.\n\nSee also:\n\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/](https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/](https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/](https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/)\n    \n\nTo determine how many pages of data are available, the API returns two header fields with every paginated response:\n\n*   `X-WP-Total`: the total number of records in the collection\n*   `X-WP-TotalPages`: the total number of pages encompassing all available records\n    \n\nBy inspecting these header fields you can determine how much more data is available within the API."
+					},
+					"response": []
+				},
+				{
+					"name": "Post Single GET (w/ params)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts/1?_fields=id, title",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "id, title"
+								}
+							]
+						},
+						"description": "When `_fields` is provided then WordPress will skip unneeded fields when generating your response object, avoiding potentially expensive internal computation or queries for data you don’t need. This also means the JSON object returned from the REST API will be smaller, requiring less time to download and less time to parse on your client device.\n\nSee also:\n\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/](https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/](https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/](https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/)\n    \n\nTo determine how many pages of data are available, the API returns two header fields with every paginated response:\n\n*   `X-WP-Total`: the total number of records in the collection\n*   `X-WP-TotalPages`: the total number of pages encompassing all available records\n    \n\nBy inspecting these header fields you can determine how much more data is available within the API."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Post Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/types",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/users",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth Examples (App Password)",
+			"item": [
+				{
+					"name": "GET User by ID (Context Edit)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/users/1?context=embed",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"users",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "id,name,email",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "view",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "edit",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "embed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET User by ID (Fail, Not Allowed)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/users/1?_fields=id,name,email&context=edit",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"users",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "id,name,email"
+								},
+								{
+									"key": "context",
+									"value": "view",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "edit"
+								},
+								{
+									"key": "context",
+									"value": "embed",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Post by ID (w/ Context)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts/1?context=view&_fields=id,title,featured_media,status",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts",
+								"1"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "view"
+								},
+								{
+									"key": "context",
+									"value": "embed",
+									"disabled": true
+								},
+								{
+									"key": "_fields",
+									"value": "id,title,featured_media,status"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts/?title=This is a New Title&content=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut sem at leo rhoncus semper molestie nec ante. Quisque tincidunt eros vitae sollicitudin iaculis. Donec bibendum mi est, at viverra nulla iaculis suscipit. Curabitur nec risus laoreet, suscipit augue non, suscipit metus. Maecenas pellentesque convallis est, at accumsan dui pretium sit amet. Quisque ultricies sapien a laoreet commodo. Curabitur eu tellus ut est porttitor varius ut eu tellus. Integer non eros non lorem laoreet tincidunt. Nam ac aliquet eros. Etiam ornare nisi erat, quis mollis elit pretium convallis. Cras gravida ante in eleifend efficitur. Vestibulum a rutrum arcu. Vivamus sodales ornare purus sed luctus.",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "This is a New Title"
+								},
+								{
+									"key": "content",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut sem at leo rhoncus semper molestie nec ante. Quisque tincidunt eros vitae sollicitudin iaculis. Donec bibendum mi est, at viverra nulla iaculis suscipit. Curabitur nec risus laoreet, suscipit augue non, suscipit metus. Maecenas pellentesque convallis est, at accumsan dui pretium sit amet. Quisque ultricies sapien a laoreet commodo. Curabitur eu tellus ut est porttitor varius ut eu tellus. Integer non eros non lorem laoreet tincidunt. Nam ac aliquet eros. Etiam ornare nisi erat, quis mollis elit pretium convallis. Cras gravida ante in eleifend efficitur. Vestibulum a rutrum arcu. Vivamus sodales ornare purus sed luctus."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Page",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/pages/?title=All About Me&content=All about me... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut sem at leo rhoncus semper molestie nec ante. Quisque tincidunt eros vitae sollicitudin iaculis. Donec bibendum mi est, at viverra nulla iaculis suscipit. Curabitur nec risus laoreet, suscipit augue non, suscipit metus. Maecenas pellentesque convallis est, at accumsan dui pretium sit amet. Quisque ultricies sapien a laoreet commodo. Curabitur eu tellus ut est porttitor varius ut eu tellus. Integer non eros non lorem laoreet tincidunt. Nam ac aliquet eros. Etiam ornare nisi erat, quis mollis elit pretium convallis. Cras gravida ante in eleifend efficitur. Vestibulum a rutrum arcu. Vivamus sodales ornare purus sed luctus. ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut sem at leo rhoncus semper molestie nec ante. Quisque tincidunt eros vitae sollicitudin iaculis. Donec bibendum mi est, at viverra nulla iaculis suscipit. Curabitur nec risus laoreet, suscipit augue non, suscipit metus. Maecenas pellentesque convallis est, at accumsan dui pretium sit amet. Quisque ultricies sapien a laoreet commodo. Curabitur eu tellus ut est porttitor varius ut eu tellus. Integer non eros non lorem laoreet tincidunt. Nam ac aliquet eros. Etiam ornare nisi erat, quis mollis elit pretium convallis. Cras gravida ante in eleifend efficitur. Vestibulum a rutrum arcu. Vivamus sodales ornare purus sed luctus.",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"pages",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "All About Me"
+								},
+								{
+									"key": "content",
+									"value": "All about me... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut sem at leo rhoncus semper molestie nec ante. Quisque tincidunt eros vitae sollicitudin iaculis. Donec bibendum mi est, at viverra nulla iaculis suscipit. Curabitur nec risus laoreet, suscipit augue non, suscipit metus. Maecenas pellentesque convallis est, at accumsan dui pretium sit amet. Quisque ultricies sapien a laoreet commodo. Curabitur eu tellus ut est porttitor varius ut eu tellus. Integer non eros non lorem laoreet tincidunt. Nam ac aliquet eros. Etiam ornare nisi erat, quis mollis elit pretium convallis. Cras gravida ante in eleifend efficitur. Vestibulum a rutrum arcu. Vivamus sodales ornare purus sed luctus. ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut sem at leo rhoncus semper molestie nec ante. Quisque tincidunt eros vitae sollicitudin iaculis. Donec bibendum mi est, at viverra nulla iaculis suscipit. Curabitur nec risus laoreet, suscipit augue non, suscipit metus. Maecenas pellentesque convallis est, at accumsan dui pretium sit amet. Quisque ultricies sapien a laoreet commodo. Curabitur eu tellus ut est porttitor varius ut eu tellus. Integer non eros non lorem laoreet tincidunt. Nam ac aliquet eros. Etiam ornare nisi erat, quis mollis elit pretium convallis. Cras gravida ante in eleifend efficitur. Vestibulum a rutrum arcu. Vivamus sodales ornare purus sed luctus."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Page",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts/1177?title=Markup: Image Alignment For Real",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts",
+								"1177"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Markup: Image Alignment For Real"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/users/1?context=embed",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"users",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "id,name,email",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "view",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "edit",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "embed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts/1?status=publish",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts",
+								"1"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "publish"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TODO Update a Page Copy",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/users/1?context=embed",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"users",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "id,name,email",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "view",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "edit",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "embed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Page",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/users/1?context=embed",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"users",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "id,name,email",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "view",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "edit",
+									"disabled": true
+								},
+								{
+									"key": "context",
+									"value": "embed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts/1",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
