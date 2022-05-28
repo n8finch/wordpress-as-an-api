@@ -327,6 +327,130 @@
 			]
 		},
 		{
+			"name": "Custom Meta, Fields, Endpoints",
+			"item": [
+				{
+					"name": "Post Single GET (w/ CUSTOM params)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/wp/v2/posts/1787?_fields=id, title,featured_media,meta,featured_image_src",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"wp",
+								"v2",
+								"posts",
+								"1787"
+							],
+							"query": [
+								{
+									"key": "_fields",
+									"value": "id, title,featured_media,meta,featured_image_src"
+								}
+							]
+						},
+						"description": "When `_fields` is provided then WordPress will skip unneeded fields when generating your response object, avoiding potentially expensive internal computation or queries for data you don’t need. This also means the JSON object returned from the REST API will be smaller, requiring less time to download and less time to parse on your client device.\n\nSee also:\n\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/](https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/](https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/](https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/)\n    \n\nTo determine how many pages of data are available, the API returns two header fields with every paginated response:\n\n*   `X-WP-Total`: the total number of records in the collection\n*   `X-WP-TotalPages`: the total number of pages encompassing all available records\n    \n\nBy inspecting these header fields you can determine how much more data is available within the API."
+					},
+					"response": []
+				},
+				{
+					"name": "Custom Endpoint n8finch",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "myHeader",
+								"value": "Boo!",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/n8finch/api/howdy?name=Nate",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"n8finch",
+								"api",
+								"howdy"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Nate"
+								}
+							]
+						},
+						"description": "When `_fields` is provided then WordPress will skip unneeded fields when generating your response object, avoiding potentially expensive internal computation or queries for data you don’t need. This also means the JSON object returned from the REST API will be smaller, requiring less time to download and less time to parse on your client device.\n\nSee also:\n\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/](https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/](https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/](https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/)\n    \n\nTo determine how many pages of data are available, the API returns two header fields with every paginated response:\n\n*   `X-WP-Total`: the total number of records in the collection\n*   `X-WP-TotalPages`: the total number of pages encompassing all available records\n    \n\nBy inspecting these header fields you can determine how much more data is available within the API."
+					},
+					"response": []
+				},
+				{
+					"name": "Custom Endpoint n8finch Copy",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wpapi.local/wp-json/myplugin/v1/author/1",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"wp-json",
+								"myplugin",
+								"v1",
+								"author",
+								"1"
+							]
+						},
+						"description": "When `_fields` is provided then WordPress will skip unneeded fields when generating your response object, avoiding potentially expensive internal computation or queries for data you don’t need. This also means the JSON object returned from the REST API will be smaller, requiring less time to download and less time to parse on your client device.\n\nSee also:\n\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/](https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/](https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/](https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/)\n*   [https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/)\n    \n\nTo determine how many pages of data are available, the API returns two header fields with every paginated response:\n\n*   `X-WP-Total`: the total number of records in the collection\n*   `X-WP-TotalPages`: the total number of pages encompassing all available records\n    \n\nBy inspecting these header fields you can determine how much more data is available within the API."
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Auth Examples (App Password)",
 			"item": [
 				{
