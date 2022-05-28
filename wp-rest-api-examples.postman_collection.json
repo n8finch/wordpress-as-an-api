@@ -1011,6 +1011,414 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "WPGraphQL",
+			"item": [
+				{
+					"name": "Get Posts Simple",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  posts {\n    edges {\n      node {\n        date\n        link\n        title\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts More Complex",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  posts(first: 100) {\n    edges {\n      node {\n        author {\n          node {\n            firstName\n            name\n          }\n        }\n        link\n        title\n        featuredImage {\n          node {\n            altText\n            sourceUrl\n          }\n        }\n        categories {\n          edges {\n            node {\n              slug\n              name\n              link\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post by ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  post(id: 1787, idType: DATABASE_ID) {\n    databaseId\n    title\n    link\n    featuredImage {\n      node {\n        sourceUrl\n      }\n    }\n    content\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recipe",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  recipes {\n    edges {\n      node {\n        title\n        content\n        rating {\n          rating\n          fieldGroupName\n        }\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  books {\n    edges {\n      node {\n        title\n        rating {\n          fieldGroupName\n          rating\n        }\n        content\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  users {\n    edges {\n      node {\n        firstName\n        name\n        slug\n        username\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation CREATE_POST {\n  createPost(input: {\n    clientMutationId: \"CreatePost\"\n    title: \"GraphQL Post Title\"\n    content: \"WPGraphQL is a free, open-source WordPress plugin that provides an extendable GraphQL schema and API for any WordPress site.\"\n    status: PUBLISH\n  }) {\n    post {\n      id\n      title\n      content\n      status\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation UPDATE_POST {\n  updatePost(input: {\n    clientMutationId: \"UpdatePost\",\n    id: \"cG9zdDoxOTcw\",\n    title: \"Better title!\"\n  }) {\n    post {\n      id\n      title\n      date\n      link\n      content\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AppPass}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AppUser}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation DELETE_POST {\n  deletePost(input: {\n    clientMutationId:\"DeletePost\"\n    id:\"cG9zdDoxOTcw\"\n  }) {\n    deletedId\n    post {\n      id\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JWT WPGraphQL",
+			"item": [
+				{
+					"name": "Login to get a JWT",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation LoginUser {\n  login( input: {\n    clientMutationId: \"uniqueId\",\n    username: \"asdf\",\n    password: \"asdf\"\n  } ) {\n    authToken\n    user {\n      id\n      name\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users with JWT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3dwYXBpLmxvY2FsIiwiaWF0IjoxNjUzNzY5MzYxLCJuYmYiOjE2NTM3NjkzNjEsImV4cCI6MTY1Mzc2OTY2MSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.1mGloJwiiyH9nyNi_tICiqxNPSYJbXoyBlH3pRU7-xs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  users {\n    edges {\n      node {\n        firstName\n        name\n        slug\n        username\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Post with JWT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3dwYXBpLmxvY2FsIiwiaWF0IjoxNjUzNzY5MzYxLCJuYmYiOjE2NTM3NjkzNjEsImV4cCI6MTY1Mzc2OTY2MSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.1mGloJwiiyH9nyNi_tICiqxNPSYJbXoyBlH3pRU7-xs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation CREATE_POST {\n  createPost(input: {\n    clientMutationId: \"CreatePost\"\n    title: \"JWT GraphQL Post Title\"\n    content: \"WPGraphQL is a free, open-source WordPress plugin that provides an extendable GraphQL schema and API for any WordPress site.\"\n    status: PUBLISH\n  }) {\n    post {\n      id\n      title\n      content\n      status\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://wpapi.local/graphql",
+							"protocol": "https",
+							"host": [
+								"wpapi",
+								"local"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

@@ -3,6 +3,9 @@
 /**
  * Plugin Name: WP as an API
  */
+
+define( 'GRAPHQL_JWT_AUTH_SECRET_KEY', 'whatever-you-want-to-do' );
+
 // Custom user API role.
 add_role( 'api-user', 'API User' );
 
