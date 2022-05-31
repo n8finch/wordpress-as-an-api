@@ -6,7 +6,7 @@ function PostList(props) {
     const posts = props.posts;
 
     return( 
-        <div className="RedditList">
+        <div className="PostList">
             <br/>
             <h3>Showing results for {posts.length} Posts</h3>
             <br/>

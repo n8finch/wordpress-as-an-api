@@ -8,7 +8,7 @@ import App from "./App";
 test("renders reddit reader title", () => {
 	render(<App />);
 
-	const appTitle = screen.getByText("Reddit Reader");
+	const appTitle = screen.getByText("Post Reader");
 	expect(appTitle).toBeVisible();
 });
 
@@ -34,7 +34,7 @@ test("searchbox text is modified", () => {
 // Does the request to Reddirt render as expected, in this case, two cards?
 jest.mock("axios");
 test("fetches subreddits from an API and displays them", async () => {
-	// This should be the shape we get back from Reddit.
+	// This should be the shape we get back from WordPress.
 	const response = {
 		data: {
 			data: {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import wpImg from './assets/wp.png';
 import PostList from './Components/PostList';
-import LoginForm from './Components/LoginForm';
+import Login from './Components/Login';
 
 function App() {
 	
@@ -108,7 +108,8 @@ function App() {
 
 	return (
 		<div className="App">
-			<LoginForm/>
+			{/* To activate login */}
+			{/* <Login/> */}
 			<header className="App-header">
 				<img src={wpImg} className="logo" alt="logo"/>
 				<h1 className="App-logo" alt="logo"> WP Reader</h1>

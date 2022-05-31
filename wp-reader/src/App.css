@@ -39,6 +39,14 @@ h5 {
   font-size: 1.25rem;
 }
 
+.card-body.dark-bg {
+  background-color: #282c34;
+}
+
+.card-body.dark-bg h3 {
+  color: white;
+}
+
 .card-body a {
   font-weight: 600;
   text-decoration: none;

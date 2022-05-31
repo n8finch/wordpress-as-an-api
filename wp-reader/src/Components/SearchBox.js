@@ -9,7 +9,7 @@ function SearchBox(props) {
 		const { name, value } = event.target
 
 		// Just alphanumerics and underscorse
-		// I think this is all Reddit allows for... could not verify.
+		// I think this is all WP allows for... could not verify.
 		const string = value.replace(/[^a-z0-9_]+/gi, '');
 
 		setSearch({ ...search, [name]: string })
