@@ -109,7 +109,7 @@ function App() {
 	return (
 		<div className="App">
 			{/* To activate login */}
-			{/* <Login/> */}
+			<Login/>
 			<header className="App-header">
 				<img src={wpImg} className="logo" alt="logo"/>
 				<h1 className="App-logo" alt="logo"> WP Reader</h1>

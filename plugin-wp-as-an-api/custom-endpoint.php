@@ -14,8 +14,8 @@ add_action('rest_api_init', function () {
         'methods' => 'GET',
         'callback' =>  'say_hello_from_rest',
         'permission_callback' => function () {
-            // return false;
-            return current_user_can( 'administrator' );
+            // return true;
+            // return current_user_can( 'administrator' );
             return current_user_can( 'api-user' );
         }
     ));
